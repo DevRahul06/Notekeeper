@@ -70,3 +70,7 @@ Cancel
 Delete
 
 Tooltip text
+
+<span class="material-symbols-rounded" aria-hidden="true">note_stack</span>
+
+No notes
