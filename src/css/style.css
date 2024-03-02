@@ -539,18 +539,18 @@ body {
 }
 
 
-.modal-overlay{
+.modal-overlay {
   z-index: 6;
   visibility: visible;
   animation: fade-overlay var(--tr-duration-short) var(--tr-easing-linear) forwards;
 }
 
 @keyframes fade-overlay {
-  0%{
+  0% {
     opacity: 0;
   }
 
-  100%{
+  100% {
     opacity: 0.5;
   }
 }
@@ -744,7 +744,7 @@ body {
  * Button
  */
 
-.btn{
+.btn {
   height: 40px;
   max-width: max-content;
   display: grid;
@@ -752,11 +752,11 @@ body {
   border-radius: var(--radius-full);
 }
 
-.btn.text{
+.btn.text {
   color: var(--primary);
-  --state-layer-bg:var(--primary);
-  padding-inline:var(--spacing-3);
-} 
+  --state-layer-bg: var(--primary);
+  padding-inline: var(--spacing-3);
+}
 
 .btn.text:disabled {
   color: var(--on-surface);
@@ -770,18 +770,20 @@ body {
 .btn.fill {
   background-color: var(--primary);
   color: var(--on-primary);
-  --state-layer-bg:var(--on-primar);
+  --state-layer-bg: var(--on-primar);
   padding-inline: var(--spacing-6);
   transition: box-shadow var(--tr-duration-short) var(--tr-easing-linear);
 }
 
-.btn.fill:hover:not(:focus) { box-shadow: var(--shadow-1);}
+.btn.fill:hover:not(:focus) {
+  box-shadow: var(--shadow-1);
+}
 
 /**
  * Tooltip
  */
 
-.tooltip{
+.tooltip {
   position: fixed;
   z-index: 4;
   height: 24px;
@@ -793,13 +795,18 @@ body {
   white-space: nowrap;
   border-radius: var(--radius-extra-small);
   pointer-events: none;
-  animation:fade var(--tr-duration-short) var(--tr-easing-linear) forwards;
+  animation: fade var(--tr-duration-short) var(--tr-easing-linear) forwards;
 }
 
 
 @keyframes fade {
-  0%{ opacity: 0;}
-  100%{opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -1007,3 +1014,89 @@ body {
 /*-----------------------------------*\
   #MEDIA QUERIES
 \*-----------------------------------*/
+
+/* ------
+     responsive for larger than 768px screen  
+      ------ */
+
+@media (min-width:768px) {
+
+  /* ------ MAIN ------ */
+
+  .main {
+    padding-inline: var(--spacing-6);
+  }
+
+}
+
+
+/* ------
+     responsive for larger than 992px screen  
+      ------ */
+
+@media (min-width:992px) {
+
+  /* ----- BASE ------ */
+
+  body {
+    padding-inline-start: var(--sidebar-width);
+  }
+
+  /* ----- REUSED STYLE ------ */
+
+  .overlay:not(.modal-overlay) {
+    display: none;
+  }
+
+  /* ----- SIDEBAR  ------ */
+
+  .sidebar {
+    visibility: visible;
+    left: 0;
+    height: 100vh;
+    grid-template-rows: repeat(3, max-content) 1fr max-content;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .sidebar.active {
+    transform: unset;
+  }
+
+  .sidebar .fab {
+    display: flex;
+  }
+
+
+  /* ----- MAIN  ------ */
+
+  .main {
+    padding-inline: var(--spacing-10);
+  }
+
+  .menu-btn,
+  .main .fab {
+    display: none;
+  }
+
+
+}
+
+
+
+/* ------
+     responsive for larger than 1400px screen  
+      ------ */
+
+@media (min-width:1400px) {
+
+  /* ------ MAIN ------ */
+
+
+  .main {
+    max-width: 1480px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+}
