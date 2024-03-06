@@ -118,6 +118,24 @@ export const db = {
 
       return notekeeperDB.notebooks;
     },
+
+    /**
+     * Retrieves all notes within a specified notebook.
+     * 
+     * @function
+     * @param {string} notebookId - The ID of the notebook to retrieve notes from.
+     * @returns {Array<Object>} An array of note objects.
+     */
+
+    note(notebookId) {
+      readDB();
+
+      const /** {Object} */ notebook = findNotebook(notekeeperDB, notebookId);
+
+      return notebook.notes;
+
+    }
+
   },
 
   update: {

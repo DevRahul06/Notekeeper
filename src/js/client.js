@@ -12,12 +12,20 @@ import { activeNotebook } from "./utils.js";
 import { Card } from "./components/Card.js";
 
 const /** {HTMLElement} */ sidebarList = document.querySelector(
-    "[data-sidebar-list]"
-  );
-
+    "[data-sidebar-list]");
 const /** {HTMLElement} */ notePanelTitle = document.querySelector(
     "[data-note-panel-title]");
 const /** {HTMLElement} */ notePanel = document.querySelector('[data-note-panel]');
+const /** {string} */ emptyNoteTemplate = `
+  <div class="empty-notes">
+        <span class="material-symbols-rounded" aria-hidden="true"
+          >note_stack</span
+        >
+
+        <div class="text-headline-small">No notes</div>
+      </div> 
+
+`;
 
 /**
  * The client object manages interactions with the user interface (UI) to create, Read, update and delete notebook and notes.
@@ -130,7 +138,29 @@ export const client = {
       const /** {HTMLElement} */ card = Card(noteData);
       notePanel.appendChild(card);
       
+    },
+
+    /**
+     * Reads and displays a list of notes in the UI.
+     * 
+     * @param {Array<Object>} noteList - List of note data to display.
+     */
+
+    read(noteList){
+
+      if (noteList.length) {
+        notePanel.innerHTML = '';
+
+        noteList.forEach(noteData => {
+          const /** {HTMLELement} */ card = Card(noteData);
+          notePanel.appendChild(card);
+        });
+      } else {
+        notePanel.innerHTML = emptyNoteTemplate;
+      }
+
     }
+
 
   }
 
