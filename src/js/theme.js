@@ -23,16 +23,13 @@ const toggleTheme = function () {
  */
 
 const /** {string | null} */ storedTheme = localStorage.getItem("theme");
-console.log("🚀 ~ file:theme.js:13 ~ storedTheme:", storedTheme);
 
 const /** {Boolean} */ systemThemeIsDark = window.matchMedia(
     "(prefers-color-scheme: dark)"
   ).matches;
-console.log("🚀 ~ file:theme.js:16 ~ systemThemeIsDark:", systemThemeIsDark);
 
 const /** { String} */ initialTheme =
     storedTheme ?? (systemThemeIsDark ? "dark" : "light");
-console.log("🚀 ~ file:theme.js:21 ~ initialTheme:", initialTheme);
 
 document.documentElement.setAttribute("data-theme", initialTheme);
 
