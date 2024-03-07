@@ -4,6 +4,8 @@
 
 "use strict";
 
+import { db } from "./db.js";
+
 /**
  * Attaches an event listener to a collection of DOM elements.
  *
@@ -117,6 +119,40 @@ const getRelativeTime = function (milliseconds) {
          `${day} day ago`;
 };
 
+
+/**
+ * finde a specific note by its ID Within a database of notebooks and their notes.
+ * 
+ * @param {Object} db - The database containing notebooks and notes.
+ * @param {string} noteId - The ID of the note to find.
+ * @returns {Object | undefined} - The found note Object, or undefinde id note found.
+ */
+
+
+const findeNote = (db, noteId) => {
+  let note;
+  for (const notebook of db.notebooks) {
+    note = notebook.notes.find(note => note.id === noteId);
+    if (note) break;
+  }
+  return note;
+}
+
+
+
+
+/**
+ * finds the index of a note in a notebook's array of notes based on its ID.
+ * 
+ * @param {Object} notebook - The notebook object containing an array of notes.
+ * @param {String} noteId - The ID of the note to find
+ * @returns {number} The index of the found note, or -1 if not found.
+ */
+const findeNoteIndex = function (notebook, noteId) {
+  return notebook.notes.findIndex(note => note.id === noteId);
+}
+
+
 export {
   addEventOnElements,
   getGreetingMsg,
@@ -125,5 +161,7 @@ export {
   generateID,
   findNotebook,
   findNotebookIndex,
-  getRelativeTime
+  getRelativeTime,
+  findeNote,
+  findeNoteIndex
 };
